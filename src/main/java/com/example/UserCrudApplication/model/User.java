@@ -3,16 +3,16 @@ package com.example.UserCrudApplication.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="user")
+@Table(name = "user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
-    @Column(name="username")
+    @Column(name = "username")
     private String userName;
-    @Column(name="email")
+    @Column(name = "email")
     private String userEmail;
-    @Column(name="address")
+    @Column(name = "address")
     private String userAddress;
 
     public Long getUserId() {
@@ -53,7 +53,8 @@ public class User {
         this.userEmail = userEmail;
         this.userAddress = userAddress;
     }
-    public User(){
+
+    public User() {
 
     }
 

@@ -55,4 +55,9 @@ public class UserService {
 
         return "User with id " + userId + " deleted";
     }
+
+    public String deleteAllUsers() {
+        userRepository.deleteAll();
+        return "all users deleted successfully ";
+    }
 }
