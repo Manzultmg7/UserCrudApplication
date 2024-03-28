@@ -4,7 +4,6 @@ import com.example.UserCrudApplication.controller.request.UserRequest;
 import com.example.UserCrudApplication.model.User;
 import com.example.UserCrudApplication.repository.UserRepository;
 import jakarta.transaction.Transactional;
-import jdk.dynalink.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -49,5 +48,11 @@ public class UserService {
             return userRepository.save(user);
         }
         return null;
+    }
+
+    public String deleteUserById(Long userId) {
+        userRepository.deleteById(userId);
+
+        return "User with id " + userId + " deleted";
     }
 }
