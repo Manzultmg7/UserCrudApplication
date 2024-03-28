@@ -10,8 +10,8 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig {
-    @Value("#{${auth.not.required.urls}}")
-    String[] permittedApis ;
+//    @Value("#{${auth.not.required.urls}}")
+    String[] permittedApis={"/v3/api-docs","/v3/api-docs/**","/swagger-ui.html","/swagger-ui/**","/api/**"} ;
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 

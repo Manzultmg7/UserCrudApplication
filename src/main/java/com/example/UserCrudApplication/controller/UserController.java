@@ -18,24 +18,35 @@ public class UserController {
     UserService userService;
 
     @PostMapping("/users")
-    public User createNewUser(@Valid @RequestBody UserRequest userRequest){
+    public User createNewUser(@Valid @RequestBody UserRequest userRequest) {
         return userService.createUser(userRequest);
 
     }
+
     @GetMapping("/users")
     public ResponseEntity<List<User>> getAllUsers() {
 
-        return new ResponseEntity<List<User>>(userService.getAllUser(), HttpStatus.OK);
+        List<User> users = userService.getAllUser();
+        return new ResponseEntity<>(users, HttpStatus.OK);
+
     }
+
+
     @GetMapping("/users/{userId}")
-    public ResponseEntity<User> getUserById(@PathVariable long userId){
-        User user= userService.getUserById(userId);
-        if(user!= null){
+    public ResponseEntity<User> getUserById(@PathVariable long userId) {
+        User user = userService.getUserById(userId);
+        if (user != null) {
             return new ResponseEntity<User>(user, HttpStatus.OK);
-        }
-        else {
+        } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+
+
+    @PutMapping("/users/{userId}")
+    public ResponseEntity<User> updateUser(@PathVariable Long userId, @Valid @RequestBody User user) {
+        User updatedUser = userService.updateUser(userId, user);
+        return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
 
 

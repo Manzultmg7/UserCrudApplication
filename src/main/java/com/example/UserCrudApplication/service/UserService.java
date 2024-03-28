@@ -16,6 +16,7 @@ import java.util.Optional;
 public class UserService {
     @Autowired
     UserRepository userRepository;
+
     @Transactional
     public User createUser(UserRequest userRequest) {
         User user = new User();
@@ -24,14 +25,29 @@ public class UserService {
         user.setUserEmail(userRequest.getUserEmail());
         return userRepository.save(user);
     }
-    public List<User> getAllUser(){
+
+    public List<User> getAllUser() {
         List<User> userList = new ArrayList<>();
         userRepository.findAll().forEach(userList::add);
         return userList;
     }
-    public User getUserById(Long userId){
+
+    public User getUserById(Long userId) {
         Optional<User> user = userRepository.findById(userId);
         return user.orElse(null);
 
+    }
+
+
+    public User updateUser(Long userId, User userDetails) {
+        User user = getUserById(userId);
+        if (user != null) {
+            user.setUserName(userDetails.getUserName());
+            user.setUserEmail(userDetails.getUserEmail());
+            user.setUserAddress(userDetails.getUserAddress());
+
+            return userRepository.save(user);
+        }
+        return null;
     }
 }
