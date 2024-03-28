@@ -27,6 +27,16 @@ public class UserController {
 
         return new ResponseEntity<List<User>>(userService.getAllUser(), HttpStatus.OK);
     }
+    @GetMapping("/users/{userId}")
+    public ResponseEntity<User> getUserById(@PathVariable long userId){
+        User user= userService.getUserById(userId);
+        if(user!= null){
+            return new ResponseEntity<User>(user, HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
 
 }

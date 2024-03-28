@@ -4,11 +4,13 @@ import com.example.UserCrudApplication.controller.request.UserRequest;
 import com.example.UserCrudApplication.model.User;
 import com.example.UserCrudApplication.repository.UserRepository;
 import jakarta.transaction.Transactional;
+import jdk.dynalink.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -27,5 +29,9 @@ public class UserService {
         userRepository.findAll().forEach(userList::add);
         return userList;
     }
+    public User getUserById(Long userId){
+        Optional<User> user = userRepository.findById(userId);
+        return user.orElse(null);
 
+    }
 }
