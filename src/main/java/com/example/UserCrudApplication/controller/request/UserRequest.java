@@ -1,20 +1,18 @@
 package com.example.UserCrudApplication.controller.request;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
+
+import jakarta.validation.constraints.*;
 
 public class UserRequest {
 
-    @Valid
+
     @NotEmpty
+    @Size(min=5, max=20)
     private String userName;
-    @NotNull
-    @Email
+    @NotBlank(message="email is required!!!")
+    @Email(message = "please enter valid email")
     private String userEmail;
-    @NotBlank
+    @NotEmpty
     private String userAddress;
 
     public String getUserName() {
