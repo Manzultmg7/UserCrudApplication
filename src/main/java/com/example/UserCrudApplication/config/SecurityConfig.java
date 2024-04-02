@@ -19,7 +19,8 @@ public class SecurityConfig {
                 .cors().disable()
                 .csrf().disable() // Disable CSRF for simplicity, enable it in a production environment
                 .authorizeRequests()
-                .requestMatchers(permittedApis).permitAll()
+              .requestMatchers(permittedApis)
+                .permitAll()
                 .anyRequest().authenticated().and().formLogin()  ;
 
         return http.build();

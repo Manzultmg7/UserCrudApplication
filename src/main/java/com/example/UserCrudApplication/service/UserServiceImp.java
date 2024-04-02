@@ -7,36 +7,41 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserService {
+public class UserServiceImp implements UserService {
     @Autowired
     UserRepository userRepository;
 
+    @Override
     @Transactional
     public User createUser(UserRequest userRequest) {
         User user = new User();
+
         user.setUserName(userRequest.getUserName());
         user.setUserAddress(userRequest.getUserAddress());
         user.setUserEmail(userRequest.getUserEmail());
         return userRepository.save(user);
     }
 
+    @Override
+
     public List<User> getAllUser() {
-        List<User> userList = new ArrayList<>();
-        userRepository.findAll().forEach(userList::add);
-        return userList;
+
+        return userRepository.findAll();
     }
 
+    @Override
     public User getUserById(Long userId) {
         Optional<User> user = userRepository.findById(userId);
         return user.orElse(null);
 
     }
 
+    @Override
+    @Transactional
 
     public User updateUser(Long userId, User userDetails) {
         User user = getUserById(userId);
@@ -50,12 +55,17 @@ public class UserService {
         return null;
     }
 
+    @Override
+    @Transactional
+
     public String deleteUserById(Long userId) {
         userRepository.deleteById(userId);
 
         return "User with id " + userId + " deleted";
     }
 
+    @Override
+    @Transactional
     public String deleteAllUsers() {
         userRepository.deleteAll();
         return "all users deleted successfully ";
