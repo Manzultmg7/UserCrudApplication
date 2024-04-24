@@ -1,9 +1,10 @@
 package com.example.UserCrudApplication.controller;
 
-import com.example.UserCrudApplication.controller.request.UserRequest;
-import com.example.UserCrudApplication.model.User;
-import com.example.UserCrudApplication.service.UserServiceImp;
+import com.example.UserCrudApplication.dto.UserRequest;
+import com.example.UserCrudApplication.entity.User;
+import com.example.UserCrudApplication.service.ServiceImpl.UserServiceImp;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@RequiredArgsConstructor
 public class UserController {
     @Autowired
     UserServiceImp userServiceImp;
@@ -50,13 +52,14 @@ public class UserController {
     }
 
     @DeleteMapping("/users/{userId}")
-    public String deleteUserById(@PathVariable long userId) {
-        return userServiceImp.deleteUserById(userId);
+    public void deleteUserById(@PathVariable long userId) {
+        userServiceImp.deleteUserById(userId);
     }
 
     @DeleteMapping("/users")
-    public String deleteAllUsers() {
-        return userServiceImp.deleteAllUsers();
+    public void deleteAllUsers() {
+
+        userServiceImp.deleteAllUsers();
     }
 
 }
