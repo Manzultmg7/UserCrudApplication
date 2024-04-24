@@ -1,4 +1,4 @@
-package com.example.UserCrudApplication.model;
+package com.example.UserCrudApplication.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

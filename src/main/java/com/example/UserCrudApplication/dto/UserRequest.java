@@ -1,4 +1,4 @@
-package com.example.UserCrudApplication.controller.request;
+package com.example.UserCrudApplication.dto;
 
 
 import jakarta.validation.constraints.*;

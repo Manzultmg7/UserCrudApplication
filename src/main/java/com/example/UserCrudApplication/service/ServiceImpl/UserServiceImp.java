@@ -1,8 +1,9 @@
-package com.example.UserCrudApplication.service;
+package com.example.UserCrudApplication.service.ServiceImpl;
 
-import com.example.UserCrudApplication.controller.request.UserRequest;
-import com.example.UserCrudApplication.model.User;
+import com.example.UserCrudApplication.dto.UserRequest;
+import com.example.UserCrudApplication.entity.User;
 import com.example.UserCrudApplication.repository.UserRepository;
+import com.example.UserCrudApplication.service.UserService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

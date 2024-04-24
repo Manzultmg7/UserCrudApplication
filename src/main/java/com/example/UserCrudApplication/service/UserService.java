@@ -1,7 +1,7 @@
 package com.example.UserCrudApplication.service;
 
-import com.example.UserCrudApplication.controller.request.UserRequest;
-import com.example.UserCrudApplication.model.User;
+import com.example.UserCrudApplication.dto.UserRequest;
+import com.example.UserCrudApplication.entity.User;
 
 import java.util.List;
 
